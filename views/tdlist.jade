@@ -1,0 +1,10 @@
+- if (tdlist)
+    h1= tdlist.date
+    - if (tdlist.tds)
+      - tdlist.tds.forEach(function(td){
+        li #{td.number}, #{td.text} => #{td.status}
+      -})
+    - if (prevDate)
+        a(href= prevDate) prev
+    - if (nextDate)
+        a(href= nextDate) next
