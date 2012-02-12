@@ -1,10 +1,28 @@
-- if (tdlist)
-    h1= tdlist.date
-    - if (tdlist.tds)
-      - tdlist.tds.forEach(function(td){
-        li #{td.number}, #{td.text} => #{td.status}
-      -})
-    - if (prevDate)
-        a(href= prevDate) prev
+.container
+  .hero-unit
+    h1(style="margin: 0px 0px 20px 0px; float: left")= tdlist.date
     - if (nextDate)
-        a(href= nextDate) next
+            a(class="btn btn-primary btn-large", href= nextDate, style="margin: 10px 10px 0px 0px; float: right") next&nbsp;&gt
+    - if (prevDate)
+        a(class="btn btn-primary btn-large", href= prevDate, style="margin: 10px 10px 0px 0px; float: right") &lt;&nbsp;prev
+
+    - if (tdlist.tds)
+      table(class="table table-striped")
+        thead
+          tr
+            th(style="text-align: center;width: 10px") Number
+            th Task
+            th(style="text-align: center;") Status&nbsp;&nbsp;
+        tbody
+          - tdlist.tds.forEach(function(td){
+            tr
+              td(style="text-align: center; font-weight: bold") #{td.number}
+              td #{td.text}
+              td(style="text-align: center;")
+                -if (td.status == "DONE")
+                  span(class="statuslabel label-success") #{td.status}
+                -if (td.status == "SKIP")
+                  span(class="statuslabel label-warning") #{td.status}
+                -if (td.status == "TODO")
+                  span(class="statuslabel label-important") #{td.status}
+          -})
