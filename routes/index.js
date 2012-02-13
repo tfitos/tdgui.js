@@ -16,7 +16,15 @@ persistence.connect(function(err){
     Handling index request.
  */
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' })
+  res.render('index', { title: 'Express' });
+};
+
+exports.dashboard = function(req, res){
+  persistence.lastDates(6, function(err,docs){
+    console.dir(docs);
+    res.render('dashboard', {title: 'Dashboard', items: docs});
+  });
+
 };
 
 /*

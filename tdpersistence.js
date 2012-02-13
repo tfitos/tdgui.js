@@ -56,6 +56,15 @@ module.exports = (function(){
                     }
                 });
             });
+        },
+        lastDates: function (limit, cb){
+            tdlist.find({}, {'_id': 0, 'date': 1}, {'sort':{'realdate': 1}, 'limit':limit},
+                function(err,cursor){
+                    if(err){ cb(err); }
+                    cursor.toArray(function(err, docs) {
+                        cb(null, docs);
+                    });
+                });
         }
     }
 }());

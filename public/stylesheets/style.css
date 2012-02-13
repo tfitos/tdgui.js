@@ -15,6 +15,37 @@ body {
     border-radius: 3px;
 }
 
+.dashtext {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: bold;
+}
+
+.dashrow {
+    margin-left: 20px;
+}
+
+.dash-unit {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.dash-unit h1 {
+    margin-bottom: 0;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+.dash-unit p {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 27px;
+}
+
 a {
   color: #00B7FF;
 }
