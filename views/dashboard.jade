@@ -1,0 +1,14 @@
+
+- var i = 0;
+- items.forEach(function(item){
+  - if (i%3 == 0){
+    <div class="dashrow">
+  - }
+      div(class="span3 dashtext dash-unit", style="text-align: center")
+        div(style="margin-bottom: 10px") #{item.date}
+        a(href="tdlist/#{item.date}", class="btn btn-info", style="float:right") Show
+  - if (i%3 == 2){
+    </div>
+  - }
+  - i++;
+- })
