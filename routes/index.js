@@ -18,12 +18,6 @@ exports.root = function(req, res){
     res.redirect('/login');
 };
 
-/*
-    Handling index request.
- */
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
-};
 
 exports.dashboard = function(req, res){
   persistence.lastDates(6, function(err,docs){

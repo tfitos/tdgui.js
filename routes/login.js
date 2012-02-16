@@ -54,7 +54,7 @@ exports.loginGet = function(req, res){
             + ' click to <a href="/logout">logout</a>. '
             + ' You may now access <a href="/restricted">/restricted</a>.';
     }
-    res.render('login', {title: "Login"});
+    res.render('login', {title: "Login", layout: "layout-outside"});
 };
 
 exports.loginPost = function(req, res){
