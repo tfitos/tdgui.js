@@ -13,6 +13,11 @@ persistence.connect(function(err){
     console.log("Connected to db.");
 });
 
+
+exports.root = function(req, res){
+    res.redirect('/login');
+};
+
 /*
     Handling index request.
  */
