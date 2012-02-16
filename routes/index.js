@@ -7,6 +7,7 @@ var DATEEXP = /^\d{4}-\w{3}-\d{2}$/;
 /*
     Connect to database.
  */
+
 persistence.connect(function(err){
     if(err) throw err;
     console.log("Connected to db.");
