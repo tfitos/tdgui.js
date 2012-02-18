@@ -1,12 +1,17 @@
 .container
   .hero-unit
     h1(style="margin: 0px 0px 20px 0px; float: left")= tdlist.date
-    - if (nextDate)
+    - if (nextDate){
         a(class="btn btn-primary btn-large", href= nextDate, style="margin: 10px 10px 0px 0px; float: right") next&nbsp;&gt;
+    - }else{
+        a(class="btn btn-large disabled", href= nextDate, style="margin: 10px 10px 0px 0px; float: right") next&nbsp;&gt;
+    - }
     a(class="btn btn-primary btn-large", href="/dashboard", style="margin: 10px 10px 0px 0px; float: right") up&nbsp;
-    - if (prevDate)
+    - if (prevDate){
         a(class="btn btn-primary btn-large", href= prevDate, style="margin: 10px 10px 0px 0px; float: right") &lt;&nbsp;prev
-
+    - }else{
+        a(class="btn btn-large disabled", href= prevDate, style="margin: 10px 10px 0px 0px; float: right") &lt;&nbsp;prev
+    - }
     - if (tdlist.tds)
       table(class="table table-striped")
         thead

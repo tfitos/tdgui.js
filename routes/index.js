@@ -20,9 +20,9 @@ exports.root = function(req, res){
 
 
 exports.dashboard = function(req, res){
-  persistence.lastDates(6, function(err,docs){
+  persistence.lastDates(12, function(err,docs){
     console.dir(docs);
-    res.render('dashboard', {title: 'Dashboard', items: docs});
+    res.render('dashboard', {title: 'Dashboard', items: docs.reverse()});
   });
 
 };
