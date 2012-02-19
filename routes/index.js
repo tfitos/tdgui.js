@@ -39,14 +39,14 @@ exports.dashboard = function(req, res){
       var pageInt = parseInt(page);
       if(!pageInt){
           persistence.page(1, ITEMSONPAGE, function(err,docs){
-            console.dir(docs);
-            console.log("count=" + count + "; pages=" + pages);
+            //console.dir(docs);
+            //console.log("count=" + count + "; pages=" + pages);
             res.render('dashboard', {title: 'Dashboard', items: docs.reverse(), pages: pages, currentPage: pages});
           });
       }else{
           persistence.page(pages - page + 1,ITEMSONPAGE, function(err,docs){
-            console.dir(docs);
-            console.log("count=" + count + "; pages=" + pages);
+            //console.dir(docs);
+            //console.log("count=" + count + "; pages=" + pages);
             res.render('dashboard', {title: 'Dashboard', items: docs.reverse(), pages: pages, currentPage: page});
           });
       }
