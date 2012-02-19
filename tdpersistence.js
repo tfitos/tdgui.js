@@ -57,14 +57,20 @@ module.exports = (function(){
                 });
             });
         },
-        lastDates: function (limit, cb){
-            tdlist.find({}, {'_id': 0, 'date': 1}, {'sort':{'realdate': -1}, 'limit':limit},
+        page: function (pagenumber, pagesize, cb){
+            tdlist.find({}, {'_id': 0, 'date': 1}, {'sort':{'realdate': -1}, 'skip':(pagenumber-1)*pagesize, 'limit':pagesize},
                 function(err,cursor){
                     if(err){ cb(err); }
                     cursor.toArray(function(err, docs) {
                         cb(null, docs);
                     });
                 });
+        },
+        count: function(cb){
+            tdlist.count({}, function(err,res){
+                if(err) cb(err);
+                cb(null,res);
+            });
         }
     }
 }());

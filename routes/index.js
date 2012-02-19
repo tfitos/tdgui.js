@@ -20,10 +20,38 @@ exports.root = function(req, res){
 
 
 exports.dashboard = function(req, res){
-  persistence.lastDates(12, function(err,docs){
-    console.dir(docs);
-    res.render('dashboard', {title: 'Dashboard', items: docs.reverse()});
-  });
+  var page,pages,count;
+  var ITEMSONPAGE = 12;
+  if(req.params.page){
+    page = req.params.page;
+    console.log("Dashboard; page=" + page);
+  }
+  async.series([
+    function(callback){
+        persistence.count(function(err,res){
+            if(err) throw err;
+            count = res;
+            pages = Math.floor(count/ITEMSONPAGE) + 1;
+            callback(null);
+        });
+    },
+    function(callback){
+      var pageInt = parseInt(page);
+      if(!pageInt){
+          persistence.page(1, ITEMSONPAGE, function(err,docs){
+            console.dir(docs);
+            console.log("count=" + count + "; pages=" + pages);
+            res.render('dashboard', {title: 'Dashboard', items: docs.reverse(), pages: pages, currentPage: pages});
+          });
+      }else{
+          persistence.page(pages - page + 1,ITEMSONPAGE, function(err,docs){
+            console.dir(docs);
+            console.log("count=" + count + "; pages=" + pages);
+            res.render('dashboard', {title: 'Dashboard', items: docs.reverse(), pages: pages, currentPage: page});
+          });
+      }
+    }
+  ]);
 
 };
 

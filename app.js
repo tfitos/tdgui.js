@@ -53,6 +53,7 @@ app.get('/login', login.loginGet);
 app.post('/login', login.loginPost);
 app.get('/tdlist/:date', login.restrict, login.accessLogger, routes.tdlist);
 app.get('/dashboard', login.restrict, login.accessLogger, routes.dashboard);
+app.get('/dashboard/:page', login.restrict, login.accessLogger, routes.dashboard);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

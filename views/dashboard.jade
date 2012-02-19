@@ -1,14 +1,40 @@
+div(class="pagination pagination-centered")
+  ul
+    - if(currentPage==1){
+      li(class="active")
+        a(href="#") «
+    - }else{
+      li
+        a(href="/dashboard/#{currentPage-1}") «
+    - }
+    - for(var j=1; j<=pages; j++){
+      - if(j != currentPage){
+        li
+          a(href="/dashboard/#{j}") #{j}
+      - }else{
+        li(class="active")
+          a(href="") #{j}
+      - }
+    - }
+    - if(currentPage==pages){
+      li(class="active")
+        a(href="#") »
+    - }else{
+      li
+        a(href="/dashboard/#{parseInt(currentPage,10) + 1}") »
+    - }
+div
+  - var i = 0;
+  - items.forEach(function(item){
+    - if (i%3 == 0){
+      <div class="dashrow">
+    - }
+        div(class="span3 dashtext dash-unit", style="text-align: center")
+          div(style="margin-bottom: 10px") #{item.date}
+          a(href="/tdlist/#{item.date}", class="btn btn-info", style="float:right") Show
+    - if (i%3 == 2 || i == (items.length - 1)){
+      </div>
+    - }
 
-- var i = 0;
-- items.forEach(function(item){
-  - if (i%3 == 0){
-    <div class="dashrow">
-  - }
-      div(class="span3 dashtext dash-unit", style="text-align: center")
-        div(style="margin-bottom: 10px") #{item.date}
-        a(href="tdlist/#{item.date}", class="btn btn-info", style="float:right") Show
-  - if (i%3 == 2){
-    </div>
-  - }
-  - i++;
-- })
+    - i++;
+  - })
