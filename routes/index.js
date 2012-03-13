@@ -15,7 +15,7 @@ persistence.connect(function(err){
 
 
 exports.root = function(req, res){
-    res.redirect('/login');
+    res.redirect('/td/login');
 };
 
 

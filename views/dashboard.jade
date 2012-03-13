@@ -5,12 +5,12 @@ div(class="pagination pagination-centered")
         a(href="#") «
     - }else{
       li
-        a(href="/dashboard/#{currentPage-1}") «
+        a(href="/td/dashboard/#{currentPage-1}") «
     - }
     - for(var j=1; j<=pages; j++){
       - if(j != currentPage){
         li
-          a(href="/dashboard/#{j}") #{j}
+          a(href="/td/dashboard/#{j}") #{j}
       - }else{
         li(class="active")
           a(href="") #{j}
@@ -21,7 +21,7 @@ div(class="pagination pagination-centered")
         a(href="#") »
     - }else{
       li
-        a(href="/dashboard/#{parseInt(currentPage,10) + 1}") »
+        a(href="/td/dashboard/#{parseInt(currentPage,10) + 1}") »
     - }
 div
   - var i = 0;
@@ -31,7 +31,7 @@ div
     - }
         div(class="span3 dashtext dash-unit", style="text-align: center")
           div(style="margin-bottom: 10px") #{item.date}
-          a(href="/tdlist/#{item.date}", class="btn btn-info", style="float:right") Show
+          a(href="/td/tdlist/#{item.date}", class="btn btn-info", style="float:right") Show
     - if (i%3 == 2 || i == (items.length - 1)){
       </div>
     - }

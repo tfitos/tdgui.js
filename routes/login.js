@@ -30,7 +30,7 @@ exports.restrict = function (req, res, next) {
         next();
     } else {
         req.session.error = 'Access denied!';
-        res.redirect('/login');
+        res.redirect('/td/login');
     }
 }
 
@@ -44,15 +44,14 @@ exports.logout = function(req, res){
     // destroy the user's session to log them out
     // will be re-created next request
     req.session.destroy(function(){
-        res.redirect('/login');
+        res.redirect('/td/login');
     });
 };
 
 exports.loginGet = function(req, res){
     if (req.session.user) {
         req.session.success = 'Authenticated as ' + req.session.user.name
-            + ' click to <a href="/logout">logout</a>. '
-            + ' You may now access <a href="/restricted">/restricted</a>.';
+            + ' click to <a href="/td/logout">logout</a>. ';
     }
     res.render('login', {title: "Login", layout: "layout-outside"});
 };
@@ -67,12 +66,11 @@ exports.loginPost = function(req, res){
                 // in the session store to be retrieved,
                 // or in this case the entire user object
                 req.session.user = user;
-                res.redirect('/dashboard');
+                res.redirect('/td/dashboard');
             });
         } else {
             req.session.error = 'Authentication failed, please check your '
-                + ' username and password.'
-                + ' (use "tamas" and "tamas")';
+                + ' username and password.';
             res.redirect('back');
         }
     });
