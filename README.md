@@ -9,7 +9,7 @@ This nodejs app can show my todo lists on a website. The inputs are documents in
 
 The result is something like this:
 
-![](http://github.com/tfitos/tdgui.js/raw/master/public/images/tdgui_sample.png)
+![](http://github.com/tfitos/tdgui.js/raw/master/public/td/images/tdgui_sample.png)
 
 
 [td.py]: http://github.com/tfitos/td.py
